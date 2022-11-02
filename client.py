@@ -22,7 +22,7 @@ def main(args):
     image  = skimage.io.imread(args.impath)
     image = Image.fromarray(image)
     image_base64 = encodeBase64Image(image)
-    request_json = {'image':image_64}
+    request_json = {'image':image_64,'video':args.video}
     model_inputs = request_json
     # model_inputs = {YOUR_MODEL_INPUT_JSON} # anything you want to send to your model
     #===============================================
@@ -36,6 +36,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--impath',type=str,default='assets/source.png')
-    parser.add_argument('--output-path',type=str,defualt='result.mp4')
+    parser.add_argument('--output-path',type=str,default='result.mp4')
+    parser.add_argument('--video',type=str,default='driving.mp4')
     args = parser.parse_args()
     main(args)
