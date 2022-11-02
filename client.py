@@ -14,7 +14,8 @@ def encodeBase64Image(image: Image) -> str:
 def main(args):
     #===============================================
     # SECRETS
-    secrets = json.load('secrets.json')
+    with open('secrets.json','r') as f:
+        secrets = json.load(f)
     api_key = secrets['API_KEY']
     model_key = secrets['MODEL_KEY']
     #===============================================
