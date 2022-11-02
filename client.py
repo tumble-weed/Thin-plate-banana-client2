@@ -2,6 +2,7 @@ import banana_dev as banana
 import json
 import argparse
 import base64 #
+from io import BytesIO
 import skimage.io #
 from PIL import Image #
 TODO = None
@@ -23,7 +24,7 @@ def main(args):
     image  = skimage.io.imread(args.impath)
     image = Image.fromarray(image)
     image_base64 = encodeBase64Image(image)
-    request_json = {'image':image_64,'video':args.video}
+    request_json = {'image':image_base64,'video':args.video}
     model_inputs = request_json
     # model_inputs = {YOUR_MODEL_INPUT_JSON} # anything you want to send to your model
     #===============================================
